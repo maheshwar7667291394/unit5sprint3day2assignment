@@ -1,0 +1,247 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mahesh             |
+| mysql              |
+| performance_schema |
+| person             |
+| sys                |
++--------------------+
+6 rows in set (1.09 sec)
+
+mysql> use mahesh;
+Database changed
+mysql> create table STUDENT(S_ID int,S_name varchar(23),S_ADDRESS varchar(23),S_PHONE varchar(12),A_AGE int);
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> drop table student;
+Query OK, 0 rows affected (1.23 sec)
+
+mysql> create table STUDENT(S_ID int,S_name varchar(23),S_ADDRESS varchar(23),S_PHONE varchar(12),A_AGE int);
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| S_ID      | int         | YES  |     | NULL    |       |
+| S_name    | varchar(23) | YES  |     | NULL    |       |
+| S_ADDRESS | varchar(23) | YES  |     | NULL    |       |
+| S_PHONE   | varchar(12) | YES  |     | NULL    |       |
+| A_AGE     | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.18 sec)
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> create table STUDENT(S_ID varchar(5),S_name varchar(23),S_ADDRESS varchar(23),S_PHONE varchar(12),A_AGE int);
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| S_ID      | varchar(5)  | YES  |     | NULL    |       |
+| S_name    | varchar(23) | YES  |     | NULL    |       |
+| S_ADDRESS | varchar(23) | YES  |     | NULL    |       |
+| S_PHONE   | varchar(12) | YES  |     | NULL    |       |
+| A_AGE     | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.05 sec)
+
+mysql> insert into student("S1","maehsh","delhi","7898998809",18);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"S1","maehsh","delhi","7898998809",18)' at line 1
+mysql> insert into student values ("S1","maehsh","delhi","7898998809",18);
+Query OK, 1 row affected (0.24 sec)
+
+mysql> insert into student values("S2","harilala","gurugaon","794885498",18),("S3","suryamohan","chandigarh","78367856",28);
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into student values("S4","suresh","delhi","789574489",20);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into student values ("S5","ratan","delhi","578475897",20);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from student;
++------+------------+------------+------------+-------+
+| S_ID | S_name     | S_ADDRESS  | S_PHONE    | A_AGE |
++------+------------+------------+------------+-------+
+| S1   | maehsh     | delhi      | 7898998809 |    18 |
+| S2   | harilala   | gurugaon   | 794885498  |    18 |
+| S3   | suryamohan | chandigarh | 78367856   |    28 |
+| S4   | suresh     | delhi      | 789574489  |    20 |
+| S5   | ratan      | delhi      | 578475897  |    20 |
++------+------------+------------+------------+-------+
+5 rows in set (0.06 sec)
+
+mysql> create table Course(C_ID varchar(23),C_NAME varchar(23));
+Query OK, 0 rows affected (0.26 sec)
+
+mysql> insert into course("C1","DSA")
+    ->  insert into course values("C1","DSA");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1","DSA")
+ insert into course values("C1","DSA")' at line 1
+mysql> insert into Course  values("C1","DSA");
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into Course values("C2","JAVA"),("C3","MERN");
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select *from course;
++------+--------+
+| C_ID | C_NAME |
++------+--------+
+| C1   | DSA    |
+| C2   | JAVA   |
+| C3   | MERN   |
++------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student;select *from Course;
++------+------------+------------+------------+-------+
+| S_ID | S_name     | S_ADDRESS  | S_PHONE    | A_AGE |
++------+------------+------------+------------+-------+
+| S1   | maehsh     | delhi      | 7898998809 |    18 |
+| S2   | harilala   | gurugaon   | 794885498  |    18 |
+| S3   | suryamohan | chandigarh | 78367856   |    28 |
+| S4   | suresh     | delhi      | 789574489  |    20 |
+| S5   | ratan      | delhi      | 578475897  |    20 |
++------+------------+------------+------------+-------+
+5 rows in set (0.00 sec)
+
++------+--------+
+| C_ID | C_NAME |
++------+--------+
+| C1   | DSA    |
+| C2   | JAVA   |
+| C3   | MERN   |
++------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create table Student_Course (S_ID varcahr(5),C_ID varcahr(5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varcahr(5),C_ID varcahr(5))' at line 1
+mysql> create tavble Student_Course(S_ID varchar(5),C_ID varchar(34));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tavble Student_Course(S_ID varchar(5),C_ID varchar(34))' at line 1
+mysql> create table Student_course(S_ID varchar(5),C_ID varchar(6));
+Query OK, 0 rows affected (0.63 sec)
+
+mysql> desc Student_Course;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| S_ID  | varchar(5) | YES  |     | NULL    |       |
+| C_ID  | varchar(6) | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into Student_Course valules("S1","C1"),("S1","C3"),("S2","C1"),("S3","C2"):
+    -> insert into Student_Course valules("S1","C1"),("S1","C3"),("S2","C1"),("S3","C2");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'valules("S1","C1"),("S1","C3"),("S2","C1"),("S3","C2"):
+insert into Student_Cour' at line 1
+mysql> insert into Student_Course values("S1","C1");
+Query OK, 1 row affected (0.12 sec)
+
+mysql>  insert into Student_Course values("S1","C3"),("S2","C1"),("S4","C2"),("S4","C3"),("S5","C2");
+Query OK, 5 rows affected (0.08 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from Student_course;
++------+------+
+| S_ID | C_ID |
++------+------+
+| S1   | C1   |
+| S1   | C3   |
+| S2   | C1   |
+| S4   | C2   |
+| S4   | C3   |
+| S5   | C2   |
++------+------+
+6 rows in set (0.00 sec)
+
+mysql> select *from student where S_ADDRESS="delhi" and S_ID=(select S_ID from Student_Course Where C_ID=(select C_ID from Course Where C_NAME="JAVA"));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select S_ID from Student_course where C_ID=(select C_ID from Course where C_NAME="JAVA");
++------+
+| S_ID |
++------+
+| S4   |
+| S5   |
++------+
+2 rows in set (0.01 sec)
+
+mysql> select *from student where S_ID=(select S_ID from Student_course where C_ID=(select C_ID from Course where C_NAME="JAVA"));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select *from  Course inner join Student_Course on Course.C_ID=Student_Course.CID;
+ERROR 1054 (42S22): Unknown column 'Student_Course.CID' in 'on clause'
+mysql> elect *from  Course inner join Student_Course on Course.C_ID=Student_Course.C_ID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elect *from  Course inner join Student_Course on Course.C_ID=Student_Course.C_ID' at line 1
+mysql> select *from  Course inner join Student_Course on Course.C_ID=Student_Course.C_ID;
++------+--------+------+------+
+| C_ID | C_NAME | S_ID | C_ID |
++------+--------+------+------+
+| C1   | DSA    | S1   | C1   |
+| C3   | MERN   | S1   | C3   |
+| C1   | DSA    | S2   | C1   |
+| C2   | JAVA   | S4   | C2   |
+| C3   | MERN   | S4   | C3   |
+| C2   | JAVA   | S5   | C2   |
++------+--------+------+------+
+6 rows in set (0.11 sec)
+
+mysql> select *from Course;
++------+--------+
+| C_ID | C_NAME |
++------+--------+
+| C1   | DSA    |
+| C2   | JAVA   |
+| C3   | MERN   |
++------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create table newtable(select S_ID from Student_course where Student_course.C_ID=(select C_ID from Course where C_NAME="JAVA"));
+Query OK, 2 rows affected (1.22 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select *from newtable;
++------+
+| S_ID |
++------+
+| S4   |
+| S5   |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select *from student where newtable.S_ID=student.S_ID;
+ERROR 1054 (42S22): Unknown column 'newtable.S_ID' in 'where clause'
+mysql> select *from Student where Student.S_ID=newtable.SID;
+ERROR 1054 (42S22): Unknown column 'newtable.SID' in 'where clause'
+mysql> select *from Student where Student.S_ID=newtable.S_ID;
+ERROR 1054 (42S22): Unknown column 'newtable.S_ID' in 'where clause'
+mysql> select *from student inner join newtable on  Student.S_ID=newtable.S_ID;
++------+--------+-----------+-----------+-------+------+
+| S_ID | S_name | S_ADDRESS | S_PHONE   | A_AGE | S_ID |
++------+--------+-----------+-----------+-------+------+
+| S4   | suresh | delhi     | 789574489 |    20 | S4   |
+| S5   | ratan  | delhi     | 578475897 |    20 | S5   |
++------+--------+-----------+-----------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql>

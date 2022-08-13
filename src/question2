@@ -1,0 +1,326 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mahesh;
+Database changed
+mysql> create table Movie(id int ,title varchar(20),Director  varchar(23),year int, length_minutes)
+    -> create table Movie(id int ,title varchar(20),Director  varchar(23),year int, length_minutes int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+create table Movie(id int ,title varchar(20),Director  varchar(23),year int, l' at line 1
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mahesh             |
+| mysql              |
+| performance_schema |
+| person             |
+| sys                |
++--------------------+
+6 rows in set (0.31 sec)
+
+mysql> use mahesh;
+Database changed
+mysql> create table Movie(id int ,title varchar(20),Director  varchar(23),year int, length_minutes int);
+Query OK, 0 rows affected (0.69 sec)
+
+mysql> desc movie;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int         | YES  |     | NULL    |       |
+| title          | varchar(20) | YES  |     | NULL    |       |
+| Director       | varchar(23) | YES  |     | NULL    |       |
+| year           | int         | YES  |     | NULL    |       |
+| length_minutes | int         | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.06 sec)
+
+mysql> inser into movie value(1,"Toy Story","John Lasseter",1995,81);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inser into movie value(1,"Toy Story","John Lasseter",1995,81)' at line 1
+mysql> insert into inser into movie value(1,"Toy Story","John Lasseter",1995,81);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'into movie value(1,"Toy Story","John Lasseter",1995,81)' at line 1
+mysql> insert into movie values(1,"Toy Story","John Lasseter",1995,81);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select *from movie;
++------+-----------+---------------+------+----------------+
+| id   | title     | Director      | year | length_minutes |
++------+-----------+---------------+------+----------------+
+|    1 | Toy Story | John Lasseter | 1995 |             81 |
++------+-----------+---------------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> insert into movie values(2,"A Bug's Life","John Lasseter ",1998 ,95)
+    -> insert into movie values(2,"A Bug's Life","John Lasseter ",1998 ,95);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into movie values(2,"A Bug's Life","John Lasseter ",1998 ,95)' at line 2
+mysql> select *from movie;
++------+-----------+---------------+------+----------------+
+| id   | title     | Director      | year | length_minutes |
++------+-----------+---------------+------+----------------+
+|    1 | Toy Story | John Lasseter | 1995 |             81 |
++------+-----------+---------------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> insert into  movie(2,"A Bug's Life","John Lasseter ",1998 ,95);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2,"A Bug's Life","John Lasseter ",1998 ,95)' at line 1
+mysql>  insert into  movie(2,"A Bugs Life","John Lasseter ",1998 ,95);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2,"A Bugs Life","John Lasseter ",1998 ,95)' at line 1
+mysql> inser into movie values(2,"A Bugs Life","John Lasseter ",1998 ,95);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inser into movie values(2,"A Bugs Life","John Lasseter ",1998 ,95)' at line 1
+mysql> insert into movie values(2,"A Bug's Life","John Lasseter",1998,95);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into movie values(3,"Toy Story 2"," John Lasseter",1999,93);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into movie values(4,"Monsters, Inc","Pete Docter",2001,92);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into movie values(5,"Civil War","Andrew Stanton ",2003,107);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into movie values(6,"The Incredibles ","Brad Bird",2004,116);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from movie;
++------+------------------+-----------------+------+----------------+
+| id   | title            | Director        | year | length_minutes |
++------+------------------+-----------------+------+----------------+
+|    1 | Toy Story        | John Lasseter   | 1995 |             81 |
+|    2 | A Bug's Life     | John Lasseter   | 1998 |             95 |
+|    3 | Toy Story 2      |  John Lasseter  | 1999 |             93 |
+|    4 | Monsters, Inc    | Pete Docter     | 2001 |             92 |
+|    5 | Civil War        | Andrew Stanton  | 2003 |            107 |
+|    6 | The Incredibles  | Brad Bird       | 2004 |            116 |
++------+------------------+-----------------+------+----------------+
+6 rows in set (0.05 sec)
+
+mysql> create table Movie_Rating(movie_id int,rating int,domestic_sales int,international_sales);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql>  create table Movie_Rating(movie_id int,rating int,domestic_sales int,international_sales int);
+Query OK, 0 rows affected (0.42 sec)
+
+mysql> desc Movie_Rating;
++---------------------+------+------+-----+---------+-------+
+| Field               | Type | Null | Key | Default | Extra |
++---------------------+------+------+-----+---------+-------+
+| movie_id            | int  | YES  |     | NULL    |       |
+| rating              | int  | YES  |     | NULL    |       |
+| domestic_sales      | int  | YES  |     | NULL    |       |
+| international_sales | int  | YES  |     | NULL    |       |
++---------------------+------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into Movie_Rating values(5,8.2,380843261,555900000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select *from  Movie_Rating;
++----------+--------+----------------+---------------------+
+| movie_id | rating | domestic_sales | international_sales |
++----------+--------+----------------+---------------------+
+|        5 |      8 |      380843261 |           555900000 |
++----------+--------+----------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into  Movie_Rating values(1,7.4,268492764,475066843);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into Movie_Rating values(3,8,206445654,417277164);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into Movie_Rating values(2 ,6.4,191452396,368400000);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into Movie_Rating values(4,7.9,245852179,239163000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Movie_Rating values(6,8 ,261441092,370001000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select*from Movie_Rating;
++----------+--------+----------------+---------------------+
+| movie_id | rating | domestic_sales | international_sales |
++----------+--------+----------------+---------------------+
+|        5 |      8 |      380843261 |           555900000 |
+|        1 |      7 |      268492764 |           475066843 |
+|        3 |      8 |      206445654 |           417277164 |
+|        2 |      6 |      191452396 |           368400000 |
+|        4 |      8 |      245852179 |           239163000 |
+|        6 |      8 |      261441092 |           370001000 |
++----------+--------+----------------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select title,domestic_sales,international_sales from movie inner join Movie_Rating on domestic_sales<international_sales;
++------------------+----------------+---------------------+
+| title            | domestic_sales | international_sales |
++------------------+----------------+---------------------+
+| Toy Story        |      261441092 |           370001000 |
+| Toy Story        |      191452396 |           368400000 |
+| Toy Story        |      206445654 |           417277164 |
+| Toy Story        |      268492764 |           475066843 |
+| Toy Story        |      380843261 |           555900000 |
+| A Bug's Life     |      261441092 |           370001000 |
+| A Bug's Life     |      191452396 |           368400000 |
+| A Bug's Life     |      206445654 |           417277164 |
+| A Bug's Life     |      268492764 |           475066843 |
+| A Bug's Life     |      380843261 |           555900000 |
+| Toy Story 2      |      261441092 |           370001000 |
+| Toy Story 2      |      191452396 |           368400000 |
+| Toy Story 2      |      206445654 |           417277164 |
+| Toy Story 2      |      268492764 |           475066843 |
+| Toy Story 2      |      380843261 |           555900000 |
+| Monsters, Inc    |      261441092 |           370001000 |
+| Monsters, Inc    |      191452396 |           368400000 |
+| Monsters, Inc    |      206445654 |           417277164 |
+| Monsters, Inc    |      268492764 |           475066843 |
+| Monsters, Inc    |      380843261 |           555900000 |
+| Civil War        |      261441092 |           370001000 |
+| Civil War        |      191452396 |           368400000 |
+| Civil War        |      206445654 |           417277164 |
+| Civil War        |      268492764 |           475066843 |
+| Civil War        |      380843261 |           555900000 |
+| The Incredibles  |      261441092 |           370001000 |
+| The Incredibles  |      191452396 |           368400000 |
+| The Incredibles  |      206445654 |           417277164 |
+| The Incredibles  |      268492764 |           475066843 |
+| The Incredibles  |      380843261 |           555900000 |
++------------------+----------------+---------------------+
+30 rows in set (0.08 sec)
+
+mysql> select title,domestic_sales,international_sales from movie inner join Movie_Rating on movie.id=(select id from Movie_Rating where domestic_sales<international_sales);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> create table joointable(select *from Movie_Rating where domestic_sales<international_sales);
+Query OK, 5 rows affected (0.20 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from jointable;
+ERROR 1146 (42S02): Table 'mahesh.jointable' doesn't exist
+mysql> select *from joointable;
++----------+--------+----------------+---------------------+
+| movie_id | rating | domestic_sales | international_sales |
++----------+--------+----------------+---------------------+
+|        5 |      8 |      380843261 |           555900000 |
+|        1 |      7 |      268492764 |           475066843 |
+|        3 |      8 |      206445654 |           417277164 |
+|        2 |      6 |      191452396 |           368400000 |
+|        6 |      8 |      261441092 |           370001000 |
++----------+--------+----------------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select title, domestic_sales,international_sales from movie inner join on joointable where movie.id=joointable.movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on joointable where movie.id=joointable.movie_id' at line 1
+mysql> select *from movie inner join on joointable where movie.id=joointable.movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on joointable where movie.id=joointable.movie_id' at line 1
+mysql>  select *from movie inner join on joointable where joointable.movie_id=movie.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on joointable where joointable.movie_id=movie.id' at line 1
+mysql> select title from movie;
++------------------+
+| title            |
++------------------+
+| Toy Story        |
+| A Bug's Life     |
+| Toy Story 2      |
+| Monsters, Inc    |
+| Civil War        |
+| The Incredibles  |
++------------------+
+6 rows in set (0.00 sec)
+
+mysql> select title ,domestic_sales, international_sales from movie  inner join joointable where movie.id=joointable.movie_id;
++------------------+----------------+---------------------+
+| title            | domestic_sales | international_sales |
++------------------+----------------+---------------------+
+| Toy Story        |      268492764 |           475066843 |
+| A Bug's Life     |      191452396 |           368400000 |
+| Toy Story 2      |      206445654 |           417277164 |
+| Civil War        |      380843261 |           555900000 |
+| The Incredibles  |      261441092 |           370001000 |
++------------------+----------------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select *from movie order rating desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rating desc' at line 1
+mysql> select  title from movie order by rating desc;
+ERROR 1054 (42S22): Unknown column 'rating' in 'order clause'
+mysql> select title from movie ineer join  Movie_Rating on  order by  Movie_Rating.rating ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by  Movie_Rating.rating' at line 1
+mysql> select title from  movie order by  rating inner join  Movie_Rating on movie.id= Movie_Rating.movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join  Movie_Rating on movie.id= Movie_Rating.movie_id' at line 1
+mysql> insert into movie(select movie_id from^C
+mysql> insert into movie(select rating from Movie_Rating);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into movie(select rating from Movie_Rating);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> select *from Movie_Rating order by rating;
++----------+--------+----------------+---------------------+
+| movie_id | rating | domestic_sales | international_sales |
++----------+--------+----------------+---------------------+
+|        2 |      6 |      191452396 |           368400000 |
+|        1 |      7 |      268492764 |           475066843 |
+|        5 |      8 |      380843261 |           555900000 |
+|        3 |      8 |      206445654 |           417277164 |
+|        4 |      8 |      245852179 |           239163000 |
+|        6 |      8 |      261441092 |           370001000 |
++----------+--------+----------------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select *from Movie_Rating order by rating desc;
++----------+--------+----------------+---------------------+
+| movie_id | rating | domestic_sales | international_sales |
++----------+--------+----------------+---------------------+
+|        5 |      8 |      380843261 |           555900000 |
+|        3 |      8 |      206445654 |           417277164 |
+|        4 |      8 |      245852179 |           239163000 |
+|        6 |      8 |      261441092 |           370001000 |
+|        1 |      7 |      268492764 |           475066843 |
+|        2 |      6 |      191452396 |           368400000 |
++----------+--------+----------------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select title from movie order by rating desc inner join on Movie_Rating where movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join on Movie_Rating where movie.id=Movie_Rating. movie_id' at line 1
+mysql> select title from movie  inner join on Movie_Rating where movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on Movie_Rating where movie.id=Movie_Rating. movie_id' at line 1
+mysql> select title from movie inner join Movie_Rating on where movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where movie.id=Movie_Rating. movie_id' at line 1
+mysql> select title from movie inner join Movie_Rating on where movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where movie.id=Movie_Rating. movie_id' at line 1
+mysql> select title from movie inner join Movie_Rating on movie.id=Movie_Rating. movie_id;
++------------------+
+| title            |
++------------------+
+| Civil War        |
+| Toy Story        |
+| Toy Story 2      |
+| A Bug's Life     |
+| Monsters, Inc    |
+| The Incredibles  |
++------------------+
+6 rows in set (0.00 sec)
+
+mysql> select title from movie order by rating inner join Movie_Rating on movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join Movie_Rating on movie.id=Movie_Rating. movie_id' at line 1
+mysql> select title from movie order by rating inner join Movie_Rating on movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join Movie_Rating on movie.id=Movie_Rating. movie_id' at line 1
+mysql> elect title from movie inner join Movie_Rating on order by rating movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elect title from movie inner join Movie_Rating on order by rating movie.id=Movie' at line 1
+mysql> elect title from movie inner join Movie_Rating on order by rating select title from movie order by rating inner join Movie_Rating on movie.id=Movie_Rating. movie_id;movie.id=Movie_Rating. movie_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elect title from movie inner join Movie_Rating on order by rating select title f' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'movie.id=Movie_Rating. movie_id' at line 1
+mysql> select title from movie order by rating inner join Movie_Rating on movie.id=select movie_id from Movie_Rating order by rating;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inner join Movie_Rating on movie.id=select movie_id from Movie_Rating order by r' at line 1
+mysql>
